@@ -2,5 +2,8 @@ node_modules/
 .cache/
 public
 src/gatsby-types.d.ts
+<<<<<<< HEAD
 
 .netlfy
+=======
+>>>>>>> 691da374219735741d793c1d4d272e0c2a124127
