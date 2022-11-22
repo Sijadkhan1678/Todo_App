@@ -1,18 +1,18 @@
 import React, { FC } from 'react'
 import { gql, useMutation } from '@apollo/client';
 import { GET_TODOS } from './Todos'
-import { Box,Typography,Stack, Button, FormControl, Modal } from '@mui/material'
+import { Box, Typography, Stack, Button, FormControl, Modal } from '@mui/material'
 import { TextField } from "formik-mui";
 import { Formik, Form, Field } from 'formik'
 import { Schema } from './Schema'
-import { Todo,FormProps } from '../interface/interfaces'
+import { Todo, FormProps } from '../interface/interfaces'
 
 
-const TodoForm: FC<FormProps> = ({ handleModal, open, current, setCurrent, updateTodo 
-  
+const TodoForm: FC<FormProps> = ({ handleModal, open, current, setCurrent, updateTodo
+
 }) => {
 
-const ADD_TODO = gql`
+  const ADD_TODO = gql`
 mutation addTodo($title:String,$status:Boolean){
  addTodo (title:$title,status:$status) {
      id
@@ -22,12 +22,12 @@ mutation addTodo($title:String,$status:Boolean){
 }`
 
 
-const [addTodo,{data,loading,error}] = useMutation(ADD_TODO,{
-  refetchQueries: [{query: GET_TODOS}]
-})
+  const [addTodo, { data, loading, error }] = useMutation(ADD_TODO, {
+    refetchQueries: [{ query: GET_TODOS }]
+  })
 
-  const formData:Todo = { title: '' }
-  
+  const formData: Todo = { title: '' }
+
   return (
 
     <div>
@@ -38,46 +38,46 @@ const [addTodo,{data,loading,error}] = useMutation(ADD_TODO,{
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-        <Typography variant="h5" fontWeight={350} mx={11}>
-         Add Today Task
-        </Typography>
+          <Typography variant="h5" fontWeight={350} mx={11}>
+            Add Today Task
+          </Typography>
           <Formik
-            initialValues={ current !==null ? current : formData }
+            initialValues={current !== null ? current : formData}
             validationSchema={Schema}
 
             onSubmit={(values) => {
-            console.log(values.title)
-              if(current !== null)  {
-                
+              console.log(values.title)
+              if (current !== null) {
+
                 const updatedValue = {
                   id: current.id,
                   title: values.title,
-                  
-                  
+
+
                 }
-              updateTodo(updatedValue)
+                updateTodo(updatedValue)
                 handleModal()
                 setCurrent(null)
-               
+
               } else {
 
                 const todo = {
                   title: values.title,
                   status: false,
-                  
+
                 }
-         addTodo({variables:todo })
-              
-          
+                addTodo({ variables: todo })
+
+
                 handleModal()
 
               }
-          
+
               // setTimeout(() => {
 
-                
+
               // }, 2000)
-             
+
             }}
           >
 
@@ -95,7 +95,7 @@ const [addTodo,{data,loading,error}] = useMutation(ADD_TODO,{
                   />
                 </FormControl>
 
-            
+
               </Box>
 
               <Stack m={3} direction='row' justifyContent='space-around'>
