@@ -7,7 +7,7 @@ import RadioButtonUncheckedOutlinedIcon from '@mui/icons-material/RadioButtonUnc
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 import BorderColorIcon from '@mui/icons-material/BorderColor';
-import { TodoItemProps } from './interface'
+import { TodoItemProps } from '../interface/interfaces'
 
 const DELETE_TODO = gql`
 mutation deleteTodo( $id:ID ){

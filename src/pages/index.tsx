@@ -1,10 +1,10 @@
 import React,{FC,useState} from 'react';
 import { Box } from '@mui/material' 
 import { gql, useMutation } from '@apollo/client';
-import { GET_TODOS } from './components/Todos'
+import { GET_TODOS } from '../components/Todos'
 import Todos from '../components/Todos'
 import Form from '../components/Form'
-import { Todo } from './interface/interfaces'
+import { Todo } from '../interface/interfaces'
 import type { HeadFC } from "gatsby"
 import Layout from "../components/Layout";
 

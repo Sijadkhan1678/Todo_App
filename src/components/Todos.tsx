@@ -3,7 +3,7 @@ import { useQuery,useMutation, gql } from '@apollo/client';
 import { Box,List,Typography,Fab,LinearProgress } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
 import TodoItem from './TodoItem'
-import { Todo,TodosProps } from './interface'
+import { Todo,TodosProps } from '../interface/interfaces'
 
 export const GET_TODOS = gql`
 query getTodos{
