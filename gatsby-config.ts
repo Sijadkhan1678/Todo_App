@@ -41,37 +41,7 @@ const config: GatsbyConfig = {
         path: path.join(__dirname,`src`,`images`)
       }
     },
-<<<<<<< HEAD
-      
 
-  
-  
-=======
-      {
-      resolve: `gatsby-source-contentful`,
-      options: {
-        spaceId: `zxxu2ddpmia8`,
-        // Learn about environment variables: https://gatsby.dev/env-vars
-        accessToken: `Brq3L6B-f4mwktTG2aKNV_mSb0Cif6li5pvA7n9hMG0`,
-        //accessToken: `CFPAT-IvVcnQ3lVBy8kxcqe-uv1Prub7mdD0e6cBwSV-8cVB8`,
-        
-      
-       
-      
-      }
-      ,
-    }
-   
-   /* {
-      resolve: `gatsby-source-contentful`,
-      options: {
-        spaceId: process.env.CONTENTFUL_SPACE_ID,
-        // Learn about environment variables: https://gatsby.dev/env-vars
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-      },
-    },
-   */
->>>>>>> 691da374219735741d793c1d4d272e0c2a124127
   ],
 }
 
