@@ -5,7 +5,7 @@ import { Box,Typography,Stack, Button, FormControl, Modal } from '@mui/material'
 import { TextField } from "formik-mui";
 import { Formik, Form, Field } from 'formik'
 import { Schema } from './Schema'
-import { Todo,FormProps } from './interface'
+import { Todo,FormProps } from '../interface/interfaces'
 
 
 const TodoForm: FC<FormProps> = ({ handleModal, open, current, setCurrent, updateTodo 

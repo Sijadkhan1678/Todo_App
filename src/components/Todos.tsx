@@ -1,26 +1,41 @@
-import React from 'react';
-import { Box,List,Typography,Fab ,IconButton} from '@mui/material'
+import React,{FC} from 'react';
+import { useQuery,useMutation, gql } from '@apollo/client';
+import { Box,List,Typography,Fab,LinearProgress } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
 import TodoItem from './TodoItem'
-const Todos = () => {
+import { Todo,TodosProps } from './interface'
+
+export const GET_TODOS = gql`
+query getTodos{
+ 
+todos {
+    id
+    title
+   status
+}
+}`
+
+const Todos: FC <TodosProps> = ({ handleUpdate,handleModal,completeTodo }) => {
+  
+  const { data,loading,error } = useQuery(GET_TODOS);
+  
+  const Loading = <LinearProgress color="secondary" />
+
    return (
-     <Box sx={{ width: '85%', maxWidth: 360, m: '0rem auto' }}  >
-<IconButton sx={{mx:'7.7rem',mt:'2rem'}}>
-<Fab color="secondary" aria-label="add" >
- <AddIcon />
+     <Box sx={{ width: '85%', maxWidth: 360, m: '0rem auto' }}>
+
+<Fab color="secondary" aria-label="add" sx={{mx:'7.9rem',mt:'2rem'}}
+>
+ <AddIcon onClick={()=> handleModal()} />
 </Fab>
-</IconButton>
+
 <Typography variant='h6' mt={3.7} fontSize="0.92rem" component='div'>
       Today  Tasks 
     </Typography>
       <List>
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      
-      
+    { loading ? Loading : data.todos.map( (todo:Todo) => (  
+      <TodoItem key={todo.id} todo={todo}  handleUpdate={handleUpdate} completeTodo={completeTodo}  />
+      )) }
       </List>
      </Box>
    )
